@@ -1,0 +1,133 @@
+-- ejercicio 1
+SELECT * FROM alumnos;
+
+-- ejercicio 2
+SELECT nombre, apellido FROM alumnos ORDER BY apellido ASC;
+
+-- ejercicio 3
+SELECT * FROM alumnos WHERE carrera = 'Ingeniería en Sistemas';
+
+-- ejercicio 4
+SELECT * FROM alumnos WHERE edad < 21;
+
+-- ejercicio 5
+SELECT * FROM materias WHERE semestre = 1;
+
+-- ejercicio 6
+SELECT nombre, creditos FROM materias WHERE creditos > 6;
+
+-- ejercico 7
+SELECT * FROM materias WHERE profesor = 'Bastian Prado';
+
+-- ejercicio 8
+SELECT * FROM tareas WHERE calificacion < 6;
+
+-- ejercicio 9
+SELECT * FROM tareas WHERE fecha_entrega IS NULL;
+
+-- ejercicio 10
+SELECT * FROM tareas WHERE fecha_entrega > fecha_limite;
+
+-- ejercicio 11
+SELECT * FROM alumnos WHERE apellido LIKE 'G%';
+
+-- ejercicio 12
+SELECT * FROM materias WHERE nombre LIKE '%Programación%';
+
+-- ejercico 13
+SELECT * FROM alumnos WHERE nombre LIKE '%a';
+
+-- ejercicio 14
+SELECT * FROM tareas WHERE excusa LIKE '%perro%';
+
+-- ejercicio 15
+SELECT t.titulo, a.nombre, a.apellido FROM tareas AS t INNER JOIN alumnos AS a ON t.id_alumno = a.id_alumno WHERE t.fecha_entrega IS NOT NULL;
+
+-- ejercicio 16
+SELECT t.titulo, m.nombre AS materia FROM tareas AS t INNER JOIN materias AS m ON t.id_materia = m.id_materia;
+
+-- ejercicio 17
+SELECT
+    a.nombre AS alumno,
+    m.nombre AS materia,
+    t.titulo,
+    t.calificacion
+FROM tareas AS t
+INNER JOIN alumnos AS a
+ON t.id_alumno = a.id_alumno
+INNER JOIN materias AS m
+ON t.id_materia = m.id_materia;
+
+-- ejercicio 18
+SELECT
+    a.nombre AS alumno,
+    m.nombre AS materia,
+    t.titulo,
+    t.calificacion
+FROM tareas AS t
+INNER JOIN alumnos AS a
+ON t.id_alumno = a.id_alumno
+INNER JOIN materias AS m
+ON t.id_materia = m.id_materia
+WHERE a.id_alumno = 6
+AND t.calificacion IS NOT NULL;
+
+-- ejercicio 19
+SELECT
+    a.nombre,
+    a.apellido,
+    t.titulo,
+    t.excusa
+FROM tareas AS t
+INNER JOIN alumnos AS a
+ON t.id_alumno = a.id_alumno
+INNER JOIN materias AS m
+ON t.id_materia = m.id_materia
+WHERE m.nombre = 'Bases de Datos'
+AND t.fecha_entrega > t.fecha_limite;
+
+-- ejercicio 20
+SELECT
+    a.nombre AS alumno,
+    m.nombre AS materia,
+    t.titulo
+FROM tareas AS t
+INNER JOIN alumnos AS a
+ON t.id_alumno = a.id_alumno
+INNER JOIN materias AS m
+ON t.id_materia = m.id_materia
+WHERE t.calificacion = 10
+ORDER BY m.nombre ASC;
+
+
+-- calculos
+-- ejercicio 21
+-- prom todas las calificaciones
+SELECT ROUND(AVG(calificacion), 2) AS promedio_general
+FROM tareas;
+
+-- ejercicio 22
+-- sum total credts
+SELECT SUM(creditos) AS total_creditos
+FROM materias;
+
+-- ejercicio 23
+-- calificacion max y min bd
+SELECT
+    MAX(t.calificacion) AS calificacion_maxima,
+    MIN(t.calificacion) AS calificacion_minima
+FROM tareas AS t
+INNER JOIN materias AS m
+ON t.id_materia = m.id_materia
+WHERE m.nombre = 'Bases de Datos';
+
+-- ejercico 24
+-- cant registrada de tareas por alumno
+SELECT
+    CONCAT(a.nombre, ' ', a.apellido) AS alumno,
+    COUNT(t.id_tarea) AS total_tareas
+FROM alumnos AS a
+LEFT JOIN tareas AS t
+ON a.id_alumno = t.id_alumno
+GROUP BY a.id_alumno, a.nombre, a.apellido
+ORDER BY a.apellido ASC;

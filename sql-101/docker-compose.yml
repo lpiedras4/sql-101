@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: postgres_clase
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: profe
+      POSTGRES_PASSWORD: clase123
+      POSTGRES_DB: universidad
+    ports:
+      - "5437:5432"
+    volumes:
+      - datos_clase:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U profe -d universidad"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  datos_clase:

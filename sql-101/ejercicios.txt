@@ -1,0 +1,26 @@
+Muestra todos los datos de todos los alumnos.
+Muestra el nombre y apellido de los alumnos, ordenados alfabéticamente por apellido.
+Lista los alumnos que estudian Ingeniería en Sistemas.
+Muestra los alumnos menores de 21 años.
+Lista las materias que se cursan en primer semestre.
+Muestra el nombre y los créditos de las materias que tienen más de 6 créditos.
+Muestra las materias que imparte un profesor de tu elección.
+Lista las tareas con calificación reprobatoria (menor a 6).
+Muestra las tareas que no han sido entregadas.
+Muestra las tareas que se entregaron después de su fecha límite.
+
+
+Muestra los alumnos cuyo apellido empieza con “G”.
+Lista las materias que contienen la palabra “Programación” en su nombre.
+Muestra los alumnos cuyo nombre termina en “a”.
+Encuentra las tareas cuya excusa menciona la palabra “perro”.
+Muestra el título de cada tarea junto con el nombre y apellido del alumno que la entregó.
+Muestra el título de cada tarea junto con el nombre de la materia a la que pertenece.
+Muestra el nombre del alumno, el nombre de la materia, el título de la tarea y su calificación (las tres tablas juntas).
+Muestra todas las calificaciones de un alumno de tu elección, indicando de qué materia es cada una.
+Lista los alumnos que entregaron tarde alguna tarea de Bases de Datos, junto con la excusa que dieron.
+Muestra el nombre del alumno, la materia y el título de todas las tareas calificadas con 10, ordenadas por materia.
+Calcula el promedio general de todas las calificaciones, redondeado a dos decimales.
+Calcula el total de créditos sumando todas las materias.
+Muestra la calificación más alta y la más baja que se han obtenido en la materia Bases de Datos.
+Muestra cuántas tareas tiene registradas cada alumno, con su nombre completo en una sola columna.
